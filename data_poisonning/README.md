@@ -9,19 +9,18 @@ Toutes les données utilisées sont synthétiques.
 
 Ce repository contient trois scripts Python distincts :
 
-1. label_flipping_and_feature_injection.py  
+1. main.py  
    Contient deux attaques de data poisoning :  
    - Label Flipping : inversion malveillante d’une partie des étiquettes  
    - Feature Injection : ajout de fausses données artificielles pour perturber la frontière de décision  
 
-2. clean_label_poisoning.py  
+2. clean_label_attack.py  
    Attaque furtive de clean-label où les labels NE sont PAS modifiés.  
    On déplace des points de manière stratégique pour tromper le modèle.
 
-3. backdoor_trigger.py  
+3. yakari_et_petit_trojan.py  
    Implémentation d’une behavioral backdoor.  
-   Le modèle fonctionne normalement, mais lorsqu’un trigger est présent dans l’entrée, il exécute :  
-   print("hello world")
+   Le modèle fonctionne normalement, mais lorsqu’un trigger est présent dans l’entrée, il exécute un reverse shell (sur la machine locales)
 
 ---
 
@@ -57,7 +56,7 @@ Attaque très furtive :
 C’est une behavioral backdoor :  
 - Le modèle fonctionne normalement  
 - MAIS si un trigger apparaît, le modèle exécute une action cachée  
-Ici : print("hello world")
+Ici : un reverse_tcp
 
 Le trigger utilisé se base sur une condition simple dans les features (ex : une feature dépassant un seuil).
 
@@ -79,9 +78,9 @@ Ce projet permet :
 
 Chaque script peut être exécuté indépendamment :
 
-python label_flipping_and_feature_injection.py  
-python clean_label_poisoning.py  
-python backdoor_trigger.py  
+python main.py  
+python clean_label_attack.py  
+python yakari_et_petit_trojan.py  
 
 Chaque fichier :
 
